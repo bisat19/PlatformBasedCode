@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Tambah Data Produk</title>
+    <style>
+        .error {color: red;}
+    </style>
+</head>
+<body>
+    <form id="productForm">
+        <h2>Form Tambah Data Produk</h2>
+        <label>Nama Produk:</label>
+        <input type="text" id="namaProduk" name="namaProduk"><br><br>
+        
+        <label>Deskripsi:</label><br>
+        <textarea id="deskripsi" name="deskripsi"></textarea><br><br>
+        
+        <label>Kategori:</label>
+        <select id="kategori" name="kategori">
+            <option value="">--Pilih Kategori--</option>
+            <option value="Baju">Baju</option>
+            <option value="Elektronik">Elektronik</option>
+            <option value="Alat Tulis">Alat Tulis</option>
+        </select><br><br>
+        
+        <label>Sub Kategori:</label>
+        <select id="subKategori" name="subKategori">
+            <option value="">--Pilih Sub Kategori--</option>
+        </select><br><br>
+        
+        <label>Harga Satuan:</label>
+        <input type="text" id="hargaSatuan" name="hargaSatuan"><br><br>
+        
+        <label>Grosir:</label>
+        <input type="radio" name="grosir" value="Ya"> Ya
+        <input type="radio" name="grosir" value="Tidak"> Tidak<br><br>
+        
+        <label>Harga Grosir:</label>
+        <input type="text" id="hargaGrosir" name="hargaGrosir"><br><br>
+        
+        <label>Jasa Kirim:</label><br>
+        <input type="checkbox" name="jasaKirim" value="JNE"> JNE<br>
+        <input type="checkbox" name="jasaKirim" value="TIKI"> TIKI<br>
+        <input type="checkbox" name="jasaKirim" value="SiCepat"> SiCepat<br>
+        <input type="checkbox" name="jasaKirim" value="Ninja Express"> Ninja Express<br>
+        <input type="checkbox" name="jasaKirim" value="Wahana"> Wahana<br><br>
+        
+        <label>Captcha:</label>
+        <input type="text" id="captchaText" readonly>
+        <input type="text" id="captchaInput" name="captchaInput"><br><br>
+        
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <script src="validation.js"></script>
+</body>
+</html>
