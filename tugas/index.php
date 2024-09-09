@@ -112,6 +112,10 @@
         <h2>Registration Form</h2>
         <form id="registrationForm" method="post" action="submit.php" onsubmit="return validateForm()">
             <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" id="name" name="name">
             </div>
@@ -160,12 +164,20 @@
                 <input type="text" id="country" name="country">
             </div>
             <div class="form-group">
+                <label>Departemen</label>
+                <input type="radio" name="departemen" value="HRD" required> HRD<br>
+                <input type="radio" name="departemen" value="Marketing" required> Marketing<br>
+                <input type="radio" name="departemen" value="RnD" required> RnD<br>
+                <input type="radio" name="departemen" value="Media" required> Media<br>
+                <input type="radio" name="departemen" value="C level" required> C level<br>
+            </div>
+            <div class="form-group">
                 <label>Peminatan</label>
                 <div class="checkbox-group">
-                    <p><input type="checkbox" name="interest[]" value="Art"> Art</p>
-                    <p><input type="checkbox" name="interest[]" value="Science"> Science</p>
-                    <p><input type="checkbox" name="interest[]" value="Politics"> Politics</p>
-                    <p><input type="checkbox" name="interest[]" value="Sports"> Sports</p>
+                    <input type="checkbox" name="interest[]" value="Art"> Art<br>
+                    <input type="checkbox" name="interest[]" value="Science"> Science<br>
+                    <input type="checkbox" name="interest[]" value="Politics"> Politics<br>
+                    <input type="checkbox" name="interest[]" value="Sports"> Sports<br>
                 </div>
             </div>
             <div class="button-group">
@@ -177,6 +189,7 @@
 
     <script>
         function validateForm() {
+            const username = document.getElementById('username').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -187,15 +200,21 @@
             const address = document.getElementById('address').value;
             const postalCode = document.getElementById('postalCode').value;
             const country = document.getElementById('country').value;
+            const departemen = document.getElementById('departemen').value;
+            const usernameRegex = /^[A-Za-z]+$/;
+            const nameRegex = /^[A-Za-z\s]+$/;
 
-            if (!name && !email && !password && !birthPlace && !day && !month && !year && !address && !postalCode && !country) {
+            if (!name && !email && !password && !birthPlace && !day && !month && !year && !address && !postalCode && !country && !departemen) {
                 alert('Mohon isi form!');
                 return false;
             }
-            if(!name){
-                alert('Mohon isi nama lengkap dengan benar!');
+            if (!username || !usernameRegex.test(username)) {
+                alert('Username tidak boleh mengandung angka atau simbol!');
                 return false;
             }
+            if (!name || !nameRegex.test(name)) {
+                alert('Nama lengkap tidak boleh mengandung angka atau simbol!');
+                return false;
             if(!email){
                 alert('Mohon isi email dengan benar!');
                 return false;
@@ -225,8 +244,9 @@
                 alert('Password setidaknya terdiri dari 8 karakter yang terdapat uppercase, lowercase, symbol, dan angka');
                 return false;
             }
-
+            alert('Anda berhasil melakukan submit!');
             return true;
+            }
         }
         function resetForm(){
             document.forms["form"].reset();
